@@ -1,6 +1,9 @@
 require 'htmltoword'
 
 file_path = Dir.pwd + '/test.docx'
-my_html = '<html><head></head><body><p>Hello</p></body></html>'
-document = Htmltoword::Document.create(my_html)
-file = Htmltoword::Document.create_and_save(my_html, file_path)
+html_path = Dir.pwd + '/hello_world.html'
+html_file = File.open(html_path, "r")
+html_string = html_file.read
+html_file.close
+document = Htmltoword::Document.create(html_string)
+file = Htmltoword::Document.create_and_save(html_string, file_path)
